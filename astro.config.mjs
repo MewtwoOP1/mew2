@@ -1,7 +1,7 @@
 import { defineConfig } from 'astro/config';
 
 export default defineConfig({
-  site: 'https://goutam.github.io',
-  base: '/',
+  site: 'https://mewtwoop1.github.io',
+  base: '/mew2',
   output: 'static'
 });
