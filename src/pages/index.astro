@@ -1,0 +1,158 @@
+---
+import '../styles/global.css';
+
+const interests = [
+  { icon: '✦', title: 'Anime & Manga', text: 'Stories, characters, worlds, and the emotional damage that somehow makes us come back for more.' },
+  { icon: '⌘', title: 'Coding', text: 'Learning to turn ideas into real things, one stubborn bug at a time.' },
+  { icon: '◌', title: 'Creative Stuff', text: 'Edits, wallpapers, aesthetics, and making little corners of the internet feel alive.' },
+  { icon: '↗', title: 'Big Dreams', text: 'Still building the path. The goal is to make something that actually matters.' }
+];
+
+const currently = [
+  ['Status', 'building my next thing'],
+  ['Learning', 'coding'],
+  ['Watching', 'anime'],
+  ['Mood', 'sakura nights']
+];
+---
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#09070d" />
+  <meta name="description" content="Mewtwo. A legendary Pokémon." />
+  <title>Mewtwo — A Legendary Pokémon</title>
+</head>
+<body>
+  <div class="noise"></div>
+  <div class="ambient ambient-one"></div>
+  <div class="ambient ambient-two"></div>
+  <div class="petals" aria-hidden="true"></div>
+
+  <header class="site-header shell">
+    <a class="brand" href="#top" aria-label="Mewtwo home">
+      <span class="brand-mark">M</span>
+      <span>mewtwo</span>
+    </a>
+    <nav aria-label="Main navigation">
+      <a href="#about">about</a>
+      <a href="#interests">interests</a>
+      <a href="#now">now</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero shell">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="dot"></span> a quiet corner of the internet</div>
+        <p class="legend">A LEGENDARY POKÉMON</p>
+        <h1>Mewtwo<span>.</span></h1>
+        <p class="hero-sub">Student. Otaku. Introvert.<br />Dreaming bigger than the room I'm in.</p>
+        <p class="hero-note">Anime, ideas, code, late-night thoughts, and a little bit of sakura falling through it all.</p>
+        <div class="actions">
+          <a class="button primary" href="#about">explore <span>↘</span></a>
+          <a class="button discord" href="https://discord.com/users/750421751137173544" target="_blank" rel="noreferrer" aria-label="Open Mewtwo's Discord profile">
+            <span class="discord-icon">◈</span> discord ↗
+          </a>
+        </div>
+        <div class="hero-meta">
+          <span>01</span><i></i><span>dream / build / repeat</span>
+        </div>
+      </div>
+
+      <div class="hero-art" aria-hidden="true">
+        <div class="moon-ring ring-one"></div>
+        <div class="moon-ring ring-two"></div>
+        <div class="moon"></div>
+        <div class="moon-glow"></div>
+        <div class="constellation c1">✦</div>
+        <div class="constellation c2">·</div>
+        <div class="constellation c3">✦</div>
+        <div class="branch">
+          <span></span><span></span><span></span><span></span><span></span>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section shell">
+      <div class="section-kicker">01 / about</div>
+      <div class="section-grid">
+        <h2>Just a guy<br /><em>chasing something bigger.</em></h2>
+        <div class="body-copy">
+          <p>I'm Mewtwo, a student who likes anime, manga, technology, and the idea of eventually building something genuinely big.</p>
+          <p>I'm naturally more on the quiet side. I explore ideas, learn new things, make stuff, and occasionally lose an unreasonable amount of time to “one more episode.”</p>
+          <p>This is my little space on the internet. No corporate biography. No fake productivity quotes. Just a place that feels like me.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="interests" class="section shell">
+      <div class="section-kicker">02 / things I like</div>
+      <div class="cards">
+        {interests.map((item, i) => (
+          <article class="card" style={`--delay:${i * 70}ms`}>
+            <div class="card-number">0{i + 1}</div>
+            <div class="card-icon">{item.icon}</div>
+            <h3>{item.title}</h3>
+            <p>{item.text}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section id="now" class="section shell">
+      <div class="section-kicker">03 / currently</div>
+      <div class="now-layout">
+        <div>
+          <h2>Right now<span class="pink-dot">.</span></h2>
+          <p class="muted">A tiny snapshot of the things occupying my brain lately.</p>
+        </div>
+        <div class="now-list">
+          {currently.map(([label, value]) => (
+            <div class="now-row"><span>{label}</span><strong>{value}</strong></div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="closing shell">
+      <div class="closing-card">
+        <div class="closing-aura"></div>
+        <div class="closing-petal">🌸</div>
+        <p class="closing-label">UNTIL THE NEXT CHAPTER</p>
+        <h2>See you somewhere<br /><span>under the sakura.</span></h2>
+        <p>Still learning. Still dreaming. Still going.</p>
+        <div class="closing-actions">
+          <a class="button primary" href="https://discord.com/users/750421751137173544" target="_blank" rel="noreferrer">find me on discord ↗</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="shell footer">
+    <span>© 2026 Mewtwo</span>
+    <span>A LEGENDARY POKÉMON · made under the sakura</span>
+  </footer>
+
+  <script>
+    const container = document.querySelector('.petals');
+    const symbols = ['❀', '✿', '❁', '·'];
+    const count = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 28;
+
+    for (let i = 0; i < count; i++) {
+      const petal = document.createElement('span');
+      petal.className = 'falling-petal';
+      petal.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+      petal.style.left = `${Math.random() * 100}%`;
+      petal.style.fontSize = `${8 + Math.random() * 13}px`;
+      petal.style.animationDuration = `${7 + Math.random() * 10}s`;
+      petal.style.animationDelay = `${-Math.random() * 15}s`;
+      petal.style.setProperty('--drift', `${-80 + Math.random() * 160}px`);
+      petal.style.setProperty('--spin', `${360 + Math.random() * 720}deg`);
+      container.appendChild(petal);
+    }
+  </script>
+</body>
+</html>
